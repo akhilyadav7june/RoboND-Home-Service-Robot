@@ -74,38 +74,29 @@ $ source devel/setup.bash
     └──
 ```
 ### Pick Objects
-Needs to have run permissions.
-```
-$ chmod +x src/pick_objects.sh
-```
-Run pick_objects.sh to run two step navigation.
 
-```
-$ ~/catkin_ws/src/pick_objects.sh
-```
+Created src/pick_objects.cpp node to pickup the virtual objects.
 
 ### Add Markers
-Needs to have run permissions.
-```
-$ chmod +x src/add_markers.sh
-```
-Run add_markers.sh to add and remove a marker on the pick up and drop off locations.
 
-```
-$ ~/catkin_ws/src/add_markers.sh
-```
-Note: The last version works but not as the Project part 11 Modeling Virtual Objects, since the logic has changed, the robot is required to reach to the marker to continue. 
+Created src/add_markers.cpp node to display the virtual objects.
 
 ### Home Service
-Needs to have run permissions.
+
+Created home_service.sh script which launches the turtelbot, amcl, rviz config file, pick objects and add_markers node. Below is the content of the shell script
 ```
-$ chmod +x src/home_service.sh
+#!/bin/sh
+xterm  -e  " roslaunch -v turtlebot_gazebo turtlebot_world.launch " &
+sleep 15
+xterm  -e  " roslaunch -v turtlebot_gazebo amcl_demo.launch " & 
+sleep 5
+xterm  -e  " roslaunch -v turtlebot_rviz_launchers view_navigation.launch " &
+sleep 15
+xterm  -e  " rosrun add_markers add_markers " &
+sleep 5
+xterm  -e  " rosrun pick_objects pick_objects "
 ```
 
-Run home_service.sh to pick and drop marker to specified locations.
-```
-$ ~/catkin_ws/src/home_service.sh
-```
 ### Run
 
 Run ./home_service.sh in Scripts directory to deploy the home service robot.
