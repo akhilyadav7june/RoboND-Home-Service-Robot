@@ -1,8 +1,8 @@
 # Home Service Robot
 
 [//]: # (Image References)
-[pickImg]: ./images/t1p1.png "Marker at pickup location before Pick up"
-[dropImg]: ./images/t1p2.png "Marker at dopoff location after robot reached"
+[pickImg]: ./images/markeratpickuplocation.png "Marker at pickup location before Pick up"
+[dropImg]: ./images/droplocation.png "Marker at dopoff location after robot reached"
 
 The goal of this project is to program a robot than can autonomously map an environment and navigate to pick up and drop off virtual objects.
 ## Project setup
